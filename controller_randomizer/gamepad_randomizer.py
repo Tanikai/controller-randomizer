@@ -1,6 +1,7 @@
-from XInput import EventHandler, GamepadThread, EVENT_BUTTON_PRESSED, FILTER_NONE
+from XInput import EventHandler, EVENT_BUTTON_PRESSED, FILTER_NONE
 from .mapped_vgamepad import MappedVirtualGamepad
 from .mapping import Button, get_random_mapping
+from .efficient_gamepad_thread import EfficientGamepadThread
 
 
 class RandomizedGamepadHandler(EventHandler):
@@ -53,7 +54,10 @@ class RandomizedGamepadThread:
         self.gamepad_thread = None
 
     def start(self):
-        self.gamepad_thread = GamepadThread(self.gamepad_handler)
+        self.gamepad_thread = EfficientGamepadThread(self.gamepad_handler)
+
+    def stop(self):
+        self.gamepad_thread.stop()
 
     def randomize(self):
         self.gamepad_handler.randomize_mapping()

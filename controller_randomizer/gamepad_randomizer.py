@@ -1,7 +1,7 @@
 from XInput import EventHandler, EVENT_BUTTON_PRESSED, FILTER_NONE
 from .mapped_vgamepad import MappedVirtualGamepad
 from .mapping import Button, get_random_mapping
-from .efficient_gamepad_thread import EfficientGamepadThread
+from controller_randomizer.xinput.efficient_gamepad_thread import EfficientGamepadThread
 
 
 class RandomizedGamepadHandler(EventHandler):
